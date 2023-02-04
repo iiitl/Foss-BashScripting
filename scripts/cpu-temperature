@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 
-grep -E 'Tctl|Tdie|Package id' /sys/class/hwmon/hwmon*/temp*_label | head -n1 | cut -d':' -f1 | sed 's/label/input/' | xargs cat
+# TODO : convert the millicelcius output into celcius and farenheit
+
+# TODO FIX : the program outputs the temperature in celcius and farenheit until 3 decimal places
+
+fout=$(grep -E 'Tctl|Tdie|Package id' /sys/class/hwmon/hwmon*/temp*_label | head -n1 | cut -d':' -f1 | sed 's/label/input/' | cat)
+
+val=$(cat $fout)
+
+printf "Celcius : %0.3f\n" $(($val))e-3
+
+n1=9
+n2=1000
+n3=5
+n4=32
+
+value=$(echo "scale=3; $val/$n2" | bc)
+value=$(echo "scale=3; $value*$n1/$n3+$n4" | bc)
+echo "Farenheit : $value";
 
 # Following script outputs current cpu die temperature in milidegree-celcius, convert it to celcius and fahrenheit and display as:
 #
