@@ -2,6 +2,8 @@
 
 # TODO (Run this script as): color magenta && echo hello && color reset
 
+# RESOLVED ISSUE : more colors added, red, yellow, blue, green, cyan
+
 color() {
     echo -ne "\033[$1;$2m"
 }
@@ -10,6 +12,11 @@ declare -A color_mapping=(
     # TODO: Add more color values
     # Refer bash color codes
     ['magenta']=35
+    ['red']=31
+    ['yellow']=33
+    ['blue']=34
+    ['green']=32
+    ['cyan']=36
 )
 
 if [[ $1 == 'reset' ]]; then
