@@ -15,7 +15,7 @@ declare -a color_mapping=(
 )
 
 if [[ $1 == 'reset' ]]; then
-    color 0 00
+    color 0 36
 else
    
     color 1 ${color_mapping[$1]}
