@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
-
-# TODO (Run this script as): color magenta && echo hello && color reset
+# Run this   ->     export PATH="$PATH:$PWD/scripts"
+# Then run this   ->     color magenta && echo hello && color reset
 
 color() {
     echo -ne "\033[$1;$2m"
 }
 
 declare -A color_mapping=(
-    # TODO: Add more color values
-    # Refer bash color codes
+    # source : https://en.wikipedia.org/wiki/ANSI_escape_code
+    ['black']=30
+    ['red']=31
+    ['green']=32
+    ['yellow']=33
+    ['blue']=34
     ['magenta']=35
+    ['cyan']=36
+    ['white']=37
 )
 
 if [[ $1 == 'reset' ]]; then
@@ -17,4 +23,5 @@ if [[ $1 == 'reset' ]]; then
 else
     color 1 ${color_mapping[$1]}
 fi
+
 
