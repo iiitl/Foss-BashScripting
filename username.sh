@@ -2,7 +2,7 @@
 
 #! /usr/bin/bash
 
-ssid = $(iwgetid -r)
+ssid=$(iwgetid -r)
 
 
 echo "The Wi-Fi username is: $ssid"
