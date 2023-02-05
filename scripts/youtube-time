@@ -6,3 +6,23 @@
 # The above command should create a output file which contains the video from 2 min to 4 min.
 #
 # Refer: youtube-dl and ffmpeg commands for this
+if ! [ -x "$(command -v youtube-dl)" ]; then
+  echo 'Error: youtube-dl is not installed.' >&2
+  exit 1
+fi
+if ! [ -x "$(command -v ffmpeg)" ]; then
+  echo 'Error: ffmpeg is not installed.' >&2
+  exit 1
+fi
+
+ # Ask for the URL of the video to be downloaded and the start and end time of the video to be downloaded. 
+read -p "Enter the URL of the video: " url 
+read -p "Enter start time (hh:mm:ss): " start_time 
+read -p "Enter end time (hh:mm:ss): " end_time
+
+ # Download and convert the video using youtube-dl and ffmpeg. 
+youtube-dl --output "%(title)s.%(ext)s" --format bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 $url && \   # Download using youtube-dl  											    # Merge formats into mp4 file  
+
+ffmpeg -i "%(title)s.mp4" -ss $start_time -to $end_time "%(title)s_edited.mp4" && \    # Cut video using ffmpeg  
+
+rm "%(title)s.mp4"    # Remove original file
