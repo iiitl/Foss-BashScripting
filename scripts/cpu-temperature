@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-grep -E 'Tctl|Tdie|Package id' /sys/class/hwmon/hwmon*/temp*_label | head -n1 | cut -d':' -f1 | sed 's/label/input/' | xargs cat
+grep -E 'Tctl|Tdie|Package id|CPU' /sys/class/hwmon/hwmon*/temp*_label | head -n1 | cut -d':' -f1 | sed 's/label/input/' | xargs cat
 
 # Following script outputs current cpu die temperature in milidegree-celcius, convert it to celcius and fahrenheit and display as:
 #
