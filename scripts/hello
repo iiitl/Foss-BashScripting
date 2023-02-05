@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+ echo -ne "\033[0;32m" hello

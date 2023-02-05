@@ -1,20 +1,24 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # TODO (Run this script as): color magenta && echo hello && color reset
 
 color() {
-    echo -ne "\033[$1;$2m"
+    echo -ne "\033[$1;$2m"hello
 }
 
-declare -A color_mapping=(
+declare -a color_mapping=(
     # TODO: Add more color values
     # Refer bash color codes
     ['magenta']=35
+    ['red']=31
+    ['green']=32
 )
 
 if [[ $1 == 'reset' ]]; then
     color 0 00
 else
+   
     color 1 ${color_mapping[$1]}
+    echo 
 fi
 
