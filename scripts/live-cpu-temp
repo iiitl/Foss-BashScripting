@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# DONE ----------------------------------------------------------------
+# TODO : convert the millicelcius output into celcius and farenheit
+# FIX : the program outputs the temperature in celcius and farenheit until 3 decimal places
+# ---------------------------------------------------------------------
+
+# IMPROVEMENTS : the program displays live temperature of cpu in celcius and farenheit with a 0.5s delay
+
+
+    n1=9
+    n2=1000
+    n3=5
+    n4=32
+
+
+
+
+
+
+while [ true ]
+do
+    # gets the file which stores the temperature of cpu info
+    fout=$(grep -E 'Tctl|Tdie|Package id' /sys/class/hwmon/hwmon*/temp*_label | head -n1 | cut -d':' -f1 | sed 's/label/input/' | cat)
+
+    # fetch the value of temperature in millicelcius
+    val=$(cat $fout)
+
+    # display the value in celcius
+    printf "Celcius : %0.3f C\n" $(($val))e-3
+
+    # calculate value in celsius
+    value=$(echo "scale=3; $val/$n2" | bc)
+
+    # convert the temperature in farenheit
+    value=$(echo "scale=3; $value*$n1/$n3+$n4" | bc)
+    echo "Fahrenheit : $value F";
+
+    # an exit prompt
+    echo "Press Ctrl + C to exit the program"
+    sleep 0.5;
+    clear;
+done
+
+
+
+# Following script outputs current cpu die temperature in milidegree-celcius, convert it to celcius and fahrenheit and display as:
+#
+# Celcius: 42.0 C
+# Fahrenheit: 107.6 F

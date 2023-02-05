@@ -2,3 +2,12 @@
 
 # TODO: Display weather of IIIT, Lucknow
 # For more information see: https://wttr.in/:help
+
+
+# My Procedure : Get the coordinates of IIIT Lucknow from google maps
+# Use curl wttr.in/<coordinates> to fetch the weather
+
+# Coordinates of IIIT Lucknow are : 26.800, 81.024
+
+echo "IIIT LUCKNOW WEATHER REPORT"
+curl wttr.in/26.800,81.024
