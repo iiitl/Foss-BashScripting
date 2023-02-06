@@ -2,3 +2,5 @@
 
 # TODO: Display weather of IIIT, Lucknow
 # For more information see: https://wttr.in/:help
+echo "Displaying the weather of IIIT, Lucknow "
+curl wttr.in/iiit,lucknow
