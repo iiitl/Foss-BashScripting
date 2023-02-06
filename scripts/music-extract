@@ -1,4 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
+
+find -name *.mp4 | while read file; do
+for i in file;
+  do name=`echo "$i" | cut -d'.' -f1`
+  echo "$name"
+  ffmpeg -i "$i" "${name}.mp3"
+done
+done
+
 
 # TODO: Make a ffmpeg script which takes all the mp4 files in a folder (recursively) and output them in the same position mp3 file
 #
