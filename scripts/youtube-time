@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # TODO: Make a script to download youtube video from given timeframes
-#
 # E.g.: youtube-time 2:00 4:00 tutorial.mkv "https://www.youtube.com/watch?v=SPwyp2NG-bE"
 # The above command should create a output file which contains the video from 2 min to 4 min.
 #
