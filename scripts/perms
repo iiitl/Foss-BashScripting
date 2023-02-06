@@ -6,7 +6,8 @@
 # $ perms weather ../README.md
 # 775 weather
 # 664 ../README.md
-
 echo -n "weather "; stat -c '%a' weather
 echo -n "Readme.md "; stat -c '%a' ../README.md
+
+
 
