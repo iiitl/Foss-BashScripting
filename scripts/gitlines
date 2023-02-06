@@ -2,3 +2,14 @@
 
 # TODO: Display lines of code by language in a remote git repository
 # Refer "cloc" command or similar
+
+# Set the remote repository URL.
+repo_url="https://github.com/user/repo"
+
+# Clone the remote repository.
+git clone "$repo_url"
+cd repo
+
+# Count the lines of code by language. 
+cloc --by-file --csv . > cloc_output.csv 
+cat cloc_output.csv | awk -F "," '{print $2,$5}' | sort -n -r
