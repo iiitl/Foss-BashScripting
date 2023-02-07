@@ -2,3 +2,5 @@
 
 # Extract the wifi username (SSID)
 # Refer: "iw dev wlan0 link" command output for this
+myssid=$(iwgetid -r)
+echo "Your Laptop/PC SSID is $myssid"
